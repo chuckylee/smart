@@ -9,6 +9,15 @@
     tools:context=".MainActivity"
     android:background="#ffffff">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_value"
+        android:layout_width="281dp"
+        android:layout_height="257dp"
+        android:layout_alignEnd="@+id/layout1"
+        android:layout_alignParentBottom="true">
+
+    </android.support.v7.widget.RecyclerView>
+
     <FrameLayout
         android:id="@+id/layout1"
         android:layout_width="360dp"
@@ -43,11 +52,60 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignStart="@+id/air_conditioner_label"
-                android:layout_marginBottom="24dp"
+
+                android:layout_marginBottom="26dp"
                 android:fontFamily="@font/nunito_bold"
-                android:text="@string/number"
+                android:text="11"
                 android:textSize="20dp"
                 />
+
+            <TextView
+                android:id="@+id/temp_percent_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/air_conditioner_label"
+                android:layout_marginBottom="11dp"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#2D976B"
+                android:layout_marginStart="15dp"
+
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/percent_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/temp_percent_up"
+                android:layout_toEndOf="@+id/temp_percent_up"
+                android:layout_marginBottom="11dp"
+                android:fontFamily="@font/nunito_bold"
+
+                android:textColor="#2D976B"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/temp_percent_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/air_conditioner_label"
+                android:layout_marginStart="15dp"
+                android:layout_alignTop="@+id/temp_percent_up"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#FF0000"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/percent_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/temp_percent_down"
+                android:layout_toEndOf="@+id/temp_percent_down"
+                android:layout_marginBottom="11dp"
+                android:fontFamily="@font/nunito_bold"
+
+                android:textColor="#FF0000"
+                android:textSize="12dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -56,7 +114,7 @@
                 android:layout_toEndOf="@+id/temp_value"
                 android:fontFamily="@font/nunito_bold"
                 android:text="°C"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <ImageButton
                 android:id="@+id/but_down"
@@ -81,6 +139,26 @@
                 android:layout_marginEnd="35dp"
                 android:background="@drawable/button"
                 app:srcCompat="@drawable/up" />
+
+            <ImageView
+                android:id="@+id/imageTempDown"
+                android:layout_width="28dp"
+                android:layout_height="15dp"
+
+                android:layout_alignEnd="@+id/temp_value"
+                android:layout_below="@+id/temp_value"
+                android:layout_marginTop="-26dp"
+                app:srcCompat="@drawable/down1" />
+
+            <ImageView
+                android:id="@+id/imageTempUp"
+                android:layout_width="28dp"
+                android:layout_height="15dp"
+
+                android:layout_alignEnd="@+id/temp_value"
+                android:layout_below="@+id/temp_value"
+                android:layout_marginTop="-26dp"
+                app:srcCompat="@drawable/up1" />
 
 
         </RelativeLayout>
@@ -120,7 +198,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignStart="@+id/indoor_temperature_label"
                 android:layout_marginTop="29dp"
-                android:text="20"
+
                 android:fontFamily="@font/nunito_bold"
                 android:textSize="20dp"/>
 
@@ -132,6 +210,46 @@
                 android:text="°C"
                 android:fontFamily="@font/nunito_bold"
                 android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/in_percent_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/indoor_temperature_label"
+                android:layout_marginStart="85dp"
+                android:textColor="#2D976B"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/syl_in_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/indoor_temperature_label"
+                android:layout_toEndOf="@+id/in_percent_up"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#2D976B"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/in_percent_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/indoor_temperature_label"
+                android:layout_marginStart="85dp"
+                android:textColor="#FF0000"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/syl_in_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/indoor_temperature_label"
+                android:layout_toEndOf="@+id/in_percent_down"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#FF0000"
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/outdoor_temperature_label"
@@ -151,7 +269,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignStart="@+id/indoor_temperature_label"
                 android:layout_marginBottom="15dp"
-                android:text="15"
+
                 android:textSize="20dp"
                 android:fontFamily="@font/nunito_bold"/>
 
@@ -163,6 +281,82 @@
                 android:text="°C"
                 android:textSize="20dp"
                 android:fontFamily="@font/nunito_bold"/>
+
+            <TextView
+                android:id="@+id/out_percent_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/outdoor_temperature_label"
+                android:layout_marginStart="85dp"
+                android:textColor="#2D976B"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/syl_out_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/outdoor_temperature_label"
+                android:layout_toEndOf="@+id/out_percent_up"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#2D976B"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/out_percent_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/outdoor_temperature_label"
+                android:layout_marginStart="85dp"
+                android:textColor="#FF0000"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/syl_out_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/outdoor_temperature_label"
+                android:layout_toEndOf="@+id/out_percent_down"
+                android:fontFamily="@font/nunito_bold"
+                android:textColor="#FF0000"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/imageInDown"
+                android:layout_width="28dp"
+                android:layout_height="15dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/indoor_temperature_label"
+                android:layout_marginStart="65dp"
+                app:srcCompat="@drawable/down1" />
+
+            <ImageView
+                android:id="@+id/imageInUp"
+                android:layout_width="28dp"
+                android:layout_height="15dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/indoor_temperature_label"
+                android:layout_marginStart="65dp"
+                app:srcCompat="@drawable/up1" />
+
+            <ImageView
+                android:id="@+id/imageOutDown"
+                android:layout_width="28dp"
+                android:layout_height="15dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/outdoor_temperature_label"
+                android:layout_marginStart="65dp"
+                app:srcCompat="@drawable/down1" />
+
+            <ImageView
+                android:id="@+id/imageOutUp"
+                android:layout_width="28dp"
+                android:layout_height="15dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/outdoor_temperature_label"
+                android:layout_marginStart="65dp"
+                app:srcCompat="@drawable/up1" />
 
 
         </RelativeLayout>
@@ -194,18 +388,20 @@
                 android:textColor="#BDBDBD"/>
 
             <TextView
-                android:id="@+id/record_value"
+                android:id="@+id/index_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignStart="@+id/record_label"
                 android:layout_marginBottom="23dp"
                 android:fontFamily="@font/nunito_bold"
-                android:text="1000"
+
                 android:textSize="20dp"/>
         </RelativeLayout>
 
     </FrameLayout>
+
+
 
 
 </RelativeLayout>

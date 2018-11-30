@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "836176402697",
+    "firebase_url": "https://smartair-3a384.firebaseio.com",
+    "project_id": "smartair-3a384",
+    "storage_bucket": "smartair-3a384.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836176402697:android:eaa0679a533461da",
+        "android_client_info": {
+          "package_name": "com.example.trung.smartair"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836176402697-vcj6m52fg7bapsm3p89qoqpqe0g349e9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trung.smartair",
+            "certificate_hash": "11f44218398f90402d7a575a3b7f3a640adea9f9"
+          }
+        },
+        {
+          "client_id": "836176402697-ul6m2qdpvdd0imn30sgto2knc9n97v2b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsu_tYorm__WISOGjBJ_TW5gul6Gt8MlY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836176402697-ul6m2qdpvdd0imn30sgto2knc9n97v2b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
