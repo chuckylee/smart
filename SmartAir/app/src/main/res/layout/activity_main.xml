@@ -11,8 +11,8 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_value"
-        android:layout_width="281dp"
-        android:layout_height="257dp"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
         android:layout_alignEnd="@+id/layout1"
         android:layout_alignParentBottom="true">
 
@@ -185,11 +185,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
-                android:text="Indoor Temperature"
-                android:textSize="13dp"
                 android:fontFamily="@font/nunito_bold"
+                android:text="Indoor Temperature"
                 android:textColor="#BDBDBD"
-                />
+                android:textSize="13dp" />
 
             <TextView
                 android:id="@+id/indoor_temp_value"
@@ -200,16 +199,16 @@
                 android:layout_marginTop="29dp"
 
                 android:fontFamily="@font/nunito_bold"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/indoor_temp_value"
                 android:layout_toEndOf="@+id/indoor_temp_value"
-                android:text="°C"
                 android:fontFamily="@font/nunito_bold"
-                android:textSize="20dp"/>
+                android:text="°C"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/in_percent_up"
@@ -257,10 +256,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/indoor_temperature_label"
                 android:layout_marginTop="57dp"
-                android:text="Outdoor Temperature"
-                android:textSize="13dp"
                 android:fontFamily="@font/nunito_bold"
-                android:textColor="#BDBDBD"/>
+                android:text="Outdoor Temperature"
+                android:textColor="#BDBDBD"
+                android:textSize="13dp" />
 
             <TextView
                 android:id="@+id/outdoor_temp_value"
@@ -270,17 +269,17 @@
                 android:layout_alignStart="@+id/indoor_temperature_label"
                 android:layout_marginBottom="15dp"
 
-                android:textSize="20dp"
-                android:fontFamily="@font/nunito_bold"/>
+                android:fontFamily="@font/nunito_bold"
+                android:textSize="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/outdoor_temp_value"
                 android:layout_toEndOf="@+id/outdoor_temp_value"
+                android:fontFamily="@font/nunito_bold"
                 android:text="°C"
-                android:textSize="20dp"
-                android:fontFamily="@font/nunito_bold"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/out_percent_up"
@@ -358,6 +357,24 @@
                 android:layout_marginStart="65dp"
                 app:srcCompat="@drawable/up1" />
 
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/InChart"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/indoor_temperature_label">
+
+            </com.github.mikephil.charting.charts.BarChart>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/OutChart"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true">
+
+            </com.github.mikephil.charting.charts.BarChart>
+
 
         </RelativeLayout>
     </FrameLayout>
@@ -402,6 +419,12 @@
     </FrameLayout>
 
 
-
+    <com.numetriclabz.numandroidcharts.AreaStackChart
+        android:layout_width="359dp"
+        android:layout_height="214dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="14dp"
+        android:id="@+id/areachart"/>
 
 </RelativeLayout>

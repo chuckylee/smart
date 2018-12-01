@@ -1,11 +1,13 @@
 package com.example.trung.smartair;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.EventLogTags;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,11 +18,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.Chart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.numetriclabz.numandroidcharts.AreaStackChart;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +45,17 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mListValue;
     private DatabaseReference mDatabase,getIndex,getIndoor,getOutdoor,getRemote;
     String tempUp,tempDown,x;
-    int iTemp=0,iIn=0,iOut=0,hTemp=0,hIn=0,hOut=0;
+    int iTemp=0,iIn=0,iOut=0,hTemp=0,hIn=0,hOut=0,jIn=0,kIn=12,jOut=0,kOut=12;
     float result;
     ArrayList<String> list;
     String listTemp[] = new String[10000];
     String listIn[] = new String[10000];
     String listOut[] = new String[10000];
+    int inChange[] = new int[10000];
+    int outChange[] = new int[10000];
+    BarChart barChartIn,barChartOut;
+    AreaStackChart areaStackChart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +63,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().getRef();
-        mListValue = (RecyclerView) findViewById(R.id.list_value);
-        mListValue.setHasFixedSize(true);
-        mListValue.setLayoutManager(new LinearLayoutManager(this));
         mTempValue = (TextView) findViewById(R.id.temp_value);
         mIndoorTempValue = (TextView) findViewById(R.id.indoor_temp_value);
         mOutdoorTempValue = (TextView) findViewById(R.id.outdoor_temp_value);
         mIndex = (TextView) findViewById(R.id.index_value);
         mDown = (ImageButton) findViewById(R.id.but_down);
         mUp = (ImageButton) findViewById(R.id.but_up);
+        barChartIn = (BarChart) findViewById(R.id.InChart);
+        barChartOut= (BarChart) findViewById(R.id.OutChart);
+        areaStackChart = (AreaStackChart) findViewById(R.id.areachart);
       ////////////////---------air condition----------------
 
         mTempPercentUp = (TextView) findViewById(R.id.temp_percent_up);
@@ -92,7 +107,9 @@ public class MainActivity extends AppCompatActivity {
         mInUp.setVisibility(View.INVISIBLE);
         mOutDown.setVisibility(View.INVISIBLE);
         mOutUp.setVisibility(View.INVISIBLE);
-
+        //-------------------------------------------------------
+        barChartIn.setNoDataText("");
+        barChartOut.setNoDataText("");
 
 
         getIndex = FirebaseDatabase.getInstance().getReference().child("index");
@@ -117,11 +134,19 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                     String index = dataSnapshot.getValue().toString();
                     listIn[iIn]=index;
+                    inChange[iIn] = Integer.parseInt(index);
+                    InChar();
+
+
                     mIndoorTempValue.setText(index);
+
                     if(iIn>=1){
                         percentIn();
+                       // InChar();
+
                     }
                     iIn++;
+
             }
 
             @Override
@@ -135,8 +160,11 @@ public class MainActivity extends AppCompatActivity {
                 String index = dataSnapshot.getValue().toString();
                 listOut[iOut]=index;
                 mOutdoorTempValue.setText(index);
+                outChange[iOut]= Integer.parseInt(index);
+                OutChar();
                 if(iOut>=1){
                     percentOut(listOut);
+                   // OutChar();
                 }
                 iOut++;
             }
@@ -182,7 +210,14 @@ public class MainActivity extends AppCompatActivity {
                 tru(tempDown);
             }
         });
+       // example();
+       // example1();
+//        InChar();
+//        OutChar();
 
+        //-----------------------------------------------------
+
+        //-----------------------------------------------------
 
 
     }
@@ -299,6 +334,170 @@ public class MainActivity extends AppCompatActivity {
 
 
         hOut++;
+    }
+
+    private void OutChar(){
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+        if(iOut == kOut){
+            jOut++;
+            kOut++;
+        }
+        for(int i=jOut;i<=iOut;i++){
+            barEntries.add(new BarEntry(outChange[i],i-jOut));
+        }
+        BarDataSet barDataSet = new BarDataSet(barEntries,"");
+        barDataSet.setColor(Color.LTGRAY);
+        ArrayList<String> theDate = new ArrayList<>();
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+
+        BarData theData = new BarData(theDate,barDataSet);
+        theData.setDrawValues(false);
+        XAxis xAxis = barChartOut.getXAxis();
+        xAxis.setEnabled(false);
+        barChartOut.getAxisLeft().setEnabled(false);
+        barChartOut.getAxisRight().setEnabled(false);
+        barChartOut.setData(theData);
+        barChartOut.setDescription("");
+        barChartOut.getLegend().setEnabled(false);
+
+    }
+
+    private void InChar(){
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+        if(iIn == kIn){
+            jIn++;
+            kIn++;
+        }
+        for(int i=jIn;i<=iIn;i++){
+            barEntries.add(new BarEntry(inChange[i],i-jIn));
+        }
+        BarDataSet barDataSet = new BarDataSet(barEntries,"");
+        ArrayList<String> theDate = new ArrayList<>();
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+
+        BarData theData = new BarData(theDate,barDataSet);
+        theData.setDrawValues(false);
+        XAxis xAxis = barChartIn.getXAxis();
+        xAxis.setEnabled(false);
+        barChartIn.getAxisLeft().setEnabled(false);
+        barChartIn.getAxisRight().setEnabled(false);
+        barChartIn.setData(theData);
+        barChartIn.setDescription("");
+        barChartIn.getLegend().setEnabled(false);
+
+
+
+
+    }
+
+    private void example(){
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+        barEntries.add(new BarEntry(4,0));
+        barEntries.add(new BarEntry(1,1));
+        barEntries.add(new BarEntry(6,2));
+        barEntries.add(new BarEntry(7,3));
+        barEntries.add(new BarEntry(8,4));
+        barEntries.add(new BarEntry(4,5));
+        barEntries.add(new BarEntry(1,6));
+        barEntries.add(new BarEntry(6,7));
+        barEntries.add(new BarEntry(7,8));
+        barEntries.add(new BarEntry(8,9));
+        barEntries.add(new BarEntry(6,10));
+        barEntries.add(new BarEntry(7,11));
+        barEntries.add(new BarEntry(8,12));
+        BarDataSet barDataSet = new BarDataSet(barEntries,"");
+
+        ArrayList<String> theDate = new ArrayList<>();
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+
+        BarData theData = new BarData(theDate,barDataSet);
+        theData.setDrawValues(false);
+        XAxis xAxis = barChartOut.getXAxis();
+        xAxis.setEnabled(false);
+        barChartOut.getAxisLeft().setEnabled(false);
+        barChartOut.getAxisRight().setEnabled(false);
+        barChartOut.setData(theData);
+        barChartOut.setDescription("");
+        barChartOut.getLegend().setEnabled(false);
+    }
+
+    private void example1(){
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+        barEntries.add(new BarEntry(4,0));
+        barEntries.add(new BarEntry(1,1));
+        barEntries.add(new BarEntry(6,2));
+        barEntries.add(new BarEntry(7,3));
+        barEntries.add(new BarEntry(8,4));
+        barEntries.add(new BarEntry(4,5));
+        barEntries.add(new BarEntry(1,6));
+        barEntries.add(new BarEntry(6,7));
+        barEntries.add(new BarEntry(7,8));
+        barEntries.add(new BarEntry(8,9));
+        barEntries.add(new BarEntry(6,10));
+        barEntries.add(new BarEntry(7,11));
+        barEntries.add(new BarEntry(8,12));
+        BarDataSet barDataSet = new BarDataSet(barEntries,"");
+        barDataSet.setColor(Color.LTGRAY);
+        ArrayList<String> theDate = new ArrayList<>();
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+        theDate.add("");
+
+        BarData theData = new BarData(theDate,barDataSet);
+        theData.setDrawValues(false);
+        XAxis xAxis = barChartIn.getXAxis();
+        xAxis.setEnabled(false);
+        barChartIn.getAxisLeft().setEnabled(false);
+        barChartIn.getAxisRight().setEnabled(false);
+        barChartIn.setData(theData);
+        barChartIn.setDescription("");
+        barChartIn.getLegend().setEnabled(false);
     }
 
 

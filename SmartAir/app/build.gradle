@@ -18,6 +18,11 @@ android {
     }
 }
 
+repositories{
+    maven {url "https://jitpack.io"}
+    maven {url 'https://dl.bintray.com/sj/maven/'}
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:support-v4:27.0.2'
@@ -28,10 +33,13 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     implementation 'com.google.firebase:firebase-database:11.8.0'
     implementation 'com.firebaseui:firebase-ui-database:2.3.0'
-
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    implementation 'com.numetriclabz.numandroidcharts:numandroidcharts:1.0.10'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
 
 
 apply plugin: 'com.google.gms.google-services'
+
+
