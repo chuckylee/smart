@@ -34,6 +34,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:11.8.0'
     implementation 'com.firebaseui:firebase-ui-database:2.3.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+
     implementation 'com.numetriclabz.numandroidcharts:numandroidcharts:1.0.10'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

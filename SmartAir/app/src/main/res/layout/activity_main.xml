@@ -167,14 +167,14 @@
     <FrameLayout
         android:id="@+id/layout2"
         android:layout_width="360dp"
-        android:layout_height="115dp"
+        android:layout_height="153dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="140dp">
 
         <RelativeLayout
             android:layout_width="360dp"
-            android:layout_height="115dp"
+            android:layout_height="153dp"
             android:background="@drawable/vien">
 
             <TextView
@@ -196,7 +196,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignStart="@+id/indoor_temperature_label"
-                android:layout_marginTop="29dp"
+                android:layout_marginTop="45dp"
 
                 android:fontFamily="@font/nunito_bold"
                 android:textSize="20dp" />
@@ -255,7 +255,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/indoor_temperature_label"
-                android:layout_marginTop="57dp"
+                android:layout_marginTop="80dp"
                 android:fontFamily="@font/nunito_bold"
                 android:text="Outdoor Temperature"
                 android:textColor="#BDBDBD"
@@ -360,16 +360,17 @@
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/InChart"
                 android:layout_width="185dp"
-                android:layout_height="wrap_content"
+                android:layout_height="65dp"
                 android:layout_alignParentEnd="true"
-                android:layout_alignTop="@+id/indoor_temperature_label">
+                android:layout_below="@+id/indoor_temperature_label"
+                android:layout_marginTop="-15dp">
 
             </com.github.mikephil.charting.charts.BarChart>
 
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/OutChart"
                 android:layout_width="185dp"
-                android:layout_height="wrap_content"
+                android:layout_height="65dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true">
 
@@ -381,14 +382,14 @@
 
     <FrameLayout
         android:layout_width="360dp"
-        android:layout_height="115dp"
+        android:layout_height="79dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="227dp">
+        android:layout_marginBottom="280dp">
 
         <RelativeLayout
             android:layout_width="360dp"
-            android:layout_height="115dp"
+            android:layout_height="79dp"
             android:background="@drawable/vien">
 
             <TextView
@@ -399,10 +400,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
-                android:text="Number of Records"
-                android:textSize="13dp"
                 android:fontFamily="@font/nunito_bold"
-                android:textColor="#BDBDBD"/>
+                android:text="Number of Records"
+                android:textColor="#BDBDBD"
+                android:textSize="13dp" />
 
             <TextView
                 android:id="@+id/index_value"
@@ -413,18 +414,24 @@
                 android:layout_marginBottom="23dp"
                 android:fontFamily="@font/nunito_bold"
 
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
         </RelativeLayout>
 
     </FrameLayout>
 
 
-    <com.numetriclabz.numandroidcharts.AreaStackChart
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
         android:layout_width="359dp"
-        android:layout_height="214dp"
+        android:layout_height="246dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="14dp"
-        android:id="@+id/areachart"/>
+
+
+        android:layout_centerHorizontal="true"
+        android:transitionName="hi">
+
+    </com.github.mikephil.charting.charts.BarChart>
+
+
 
 </RelativeLayout>
