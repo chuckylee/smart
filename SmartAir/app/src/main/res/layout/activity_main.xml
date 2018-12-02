@@ -214,9 +214,10 @@
                 android:id="@+id/in_percent_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/indoor_temperature_label"
-                android:layout_marginStart="85dp"
+
+                android:layout_alignStart="@+id/out_percent_up"
+                android:layout_alignTop="@+id/indoor_temp_value"
+                android:fontFamily="@font/nunito_bold"
                 android:textColor="#2D976B"
                 android:textSize="12dp" />
 
@@ -224,7 +225,7 @@
                 android:id="@+id/syl_in_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/indoor_temperature_label"
+                android:layout_marginTop="45dp"
                 android:layout_toEndOf="@+id/in_percent_up"
                 android:fontFamily="@font/nunito_bold"
                 android:textColor="#2D976B"
@@ -234,9 +235,9 @@
                 android:id="@+id/in_percent_down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/indoor_temperature_label"
-                android:layout_marginStart="85dp"
+                android:layout_alignStart="@+id/in_percent_up"
+                android:layout_alignTop="@+id/indoor_temp_value"
+                android:fontFamily="@font/nunito_bold"
                 android:textColor="#FF0000"
                 android:textSize="12dp" />
 
@@ -244,7 +245,7 @@
                 android:id="@+id/syl_in_down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/indoor_temperature_label"
+                android:layout_marginTop="45dp"
                 android:layout_toEndOf="@+id/in_percent_down"
                 android:fontFamily="@font/nunito_bold"
                 android:textColor="#FF0000"
@@ -285,9 +286,10 @@
                 android:id="@+id/out_percent_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/outdoor_temperature_label"
-                android:layout_marginStart="85dp"
+
+
+                android:layout_alignStart="@+id/out_percent_down"
+                android:layout_alignTop="@+id/outdoor_temp_value"
                 android:textColor="#2D976B"
                 android:textSize="12dp" />
 
@@ -295,7 +297,8 @@
                 android:id="@+id/syl_out_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/outdoor_temperature_label"
+
+                android:layout_alignTop="@+id/outdoor_temp_value"
                 android:layout_toEndOf="@+id/out_percent_up"
                 android:fontFamily="@font/nunito_bold"
                 android:textColor="#2D976B"
@@ -305,9 +308,8 @@
                 android:id="@+id/out_percent_down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/outdoor_temperature_label"
                 android:layout_marginStart="85dp"
+                android:layout_alignTop="@+id/outdoor_temp_value"
                 android:textColor="#FF0000"
                 android:textSize="12dp" />
 
@@ -315,7 +317,7 @@
                 android:id="@+id/syl_out_down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/outdoor_temperature_label"
+                android:layout_alignTop="@+id/outdoor_temp_value"
                 android:layout_toEndOf="@+id/out_percent_down"
                 android:fontFamily="@font/nunito_bold"
                 android:textColor="#FF0000"
@@ -325,35 +327,32 @@
                 android:id="@+id/imageInDown"
                 android:layout_width="28dp"
                 android:layout_height="15dp"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/indoor_temperature_label"
-                android:layout_marginStart="65dp"
+                android:layout_alignStart="@+id/imageInUp"
+                android:layout_alignTop="@+id/in_percent_up"
                 app:srcCompat="@drawable/down1" />
 
             <ImageView
                 android:id="@+id/imageInUp"
                 android:layout_width="28dp"
                 android:layout_height="15dp"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/indoor_temperature_label"
-                android:layout_marginStart="65dp"
+                android:layout_alignStart="@+id/imageOutDown"
+                android:layout_alignTop="@+id/in_percent_up"
                 app:srcCompat="@drawable/up1" />
 
             <ImageView
                 android:id="@+id/imageOutDown"
                 android:layout_width="28dp"
                 android:layout_height="15dp"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/outdoor_temperature_label"
-                android:layout_marginStart="65dp"
+                android:layout_alignStart="@+id/imageOutUp"
+                android:layout_alignTop="@+id/outdoor_temp_value"
                 app:srcCompat="@drawable/down1" />
 
             <ImageView
                 android:id="@+id/imageOutUp"
                 android:layout_width="28dp"
                 android:layout_height="15dp"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/outdoor_temperature_label"
+
+                android:layout_marginTop="110dp"
                 android:layout_marginStart="65dp"
                 app:srcCompat="@drawable/up1" />
 
